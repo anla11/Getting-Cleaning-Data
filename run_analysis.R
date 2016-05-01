@@ -1,12 +1,22 @@
-setwd("E:/Workspace/R/R-coursera/Cleaning-Data/Wk4")
+# setwd("E:/Workspace/R/R-coursera/Cleaning-Data/Wk4")
+
+if (!require("data.table")) {
+    install.packages("data.table")
+}
+
+if (!require("reshape2")) {
+    install.packages("reshape2")
+}
+
 
 require("data.table")
 require("reshape2")
 
-#1. Reading train data and test data
+#Reading feautres list and label list
 features <- read.table("UCI-HAR-Dataset/features.txt")[,2]
 labels <- read.table("UCI-HAR-Dataset/activity_labels.txt")
 
+#Reading train data and test data
 x_train <- read.table("UCI-HAR-Dataset/train/X_train.txt")
 y_train <- read.table("UCI-HAR-Dataset/train/y_train.txt")
 subject_train <- read.table("UCI-HAR-Dataset/train/subject_train.txt")
@@ -15,6 +25,7 @@ x_test <- read.table("UCI-HAR-Dataset/test/X_test.txt")
 y_test <- read.table("UCI-HAR-Dataset/test/y_test.txt")
 subject_test <- read.table("UCI-HAR-Dataset/test/subject_test.txt")
 
+#merge data train with data test
 x <- rbind(x_train, x_test)
 y <- rbind(y_train, y_test)
 subject <- rbind(subject_train, subject_test)
