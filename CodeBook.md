@@ -57,8 +57,9 @@ There are 5 parts:
 ## How ```run_analysis.R``` implements the above steps:
 
 * Require ```reshapre2``` and ```data.table``` librareis.
-* Load both test and train data
 * Load the features and activity labels.
+* Load x_train, x_test, y_train, y_test, subject
+* Merge x_train with x_test into x, y_train with y_test into y
 * Extract the mean and standard deviation column names and data.
 * Process the data. There are two parts processing test and train data respectively.
-* Merge data set.
+* Merge subject, y, x into data
